@@ -1,0 +1,46 @@
+{
+  "name": "react-fetch-mock",
+  "version": "0.3.1",
+  "description": "fetch mock for reactjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run lint && npm run test && ./node_modules/.bin/babel src --out-dir dist",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register",
+    "lint": "./node_modules/.bin/eslint src/**/*.js"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "dist/",
+      "__mocks__/",
+      "node_modules/"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WhatAKitty/react-fetch-mock.git"
+  },
+  "keywords": [
+    "react",
+    "fetch-mock"
+  ],
+  "author": "WhatAKitty",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WhatAKitty/react-fetch-mock/issues"
+  },
+  "homepage": "https://github.com/WhatAKitty/react-fetch-mock#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.10.0",
+    "expect.js": "^0.3.1",
+    "mocha": "^4.0.1"
+  },
+  "dependencies": {
+    "mockjs": "^1.0.1-beta3"
+  }
+}
