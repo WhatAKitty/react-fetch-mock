@@ -35,9 +35,11 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
     "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.10.0",
     "expect.js": "^0.3.1",
+    "isomorphic-fetch": "^2.2.1",
     "mocha": "^4.0.1"
   },
   "dependencies": {
