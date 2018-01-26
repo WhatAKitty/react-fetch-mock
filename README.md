@@ -12,7 +12,7 @@ So, I create one by myself.
 
 ## Roadmap
 - [x] Combined with Mock.js
-- [ ] Proxy for other api server
+- [x] Proxy for other api server
 - [ ] Support RAP system
 
 ## Usage
