@@ -43,6 +43,7 @@
     "mocha": "^4.0.1"
   },
   "dependencies": {
-    "mockjs": "^1.0.1-beta3"
+    "mockjs": "^1.0.1-beta3",
+    "path-to-regexp": "^2.1.0"
   }
 }

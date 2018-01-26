@@ -5,9 +5,17 @@ import FetchMock, { Mock } from '../';
 const fetch = new FetchMock(require('../__mocks__'), {
   fetch: require('isomorphic-fetch'),
   exclude: [
-    /^foo(bar)?$/i,
-    /http:\/\/www.baidu.com/,
+    '/foo/boo/:foo*',
+    'http://:foo*',
+    'https://:foo*',
   ],
+  proxy: [{
+    path: '/taobao/search(.*)',
+    target: 'https://suggest.taobao.com/sug',
+    process: ({ target }, matches) => {
+      return `${target}${matches[1]}`
+    }
+  }],
 }).fetch;
 describe('test fetch mock', () => {
   it('fetch /api/users data', async () => {
@@ -145,5 +153,16 @@ describe('test fetch mock', () => {
     expect(data).not.to.be.empty();
     expect(data).to.be.an('object');
     expect(data.userId).to.be.eql(123);
+  });
+
+  it('proxy other api server', async () => {
+    const response = await fetch('/taobao/search?code=utf-8&q=dongxi');
+    const { status } = response;
+    const data = await response.json();
+    expect(status).to.be.eql(200);
+    expect(data).not.to.be(undefined);
+    expect(data).not.to.be.empty();
+    expect(data).to.be.an('object');
+    expect(data.result).to.be.an('array');
   });
 });
