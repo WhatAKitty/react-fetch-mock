@@ -133,7 +133,7 @@ class FetchMock {
       obj = {
         status: 200,
         data: obj,
-      }
+      };
     }
 
     const response = new Response(obj);
