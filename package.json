@@ -1,6 +1,6 @@
 {
   "name": "react-fetch-mock",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "fetch mock for reactjs",
   "main": "index.js",
   "scripts": {
