@@ -5,6 +5,7 @@ import FetchMock, { Mock } from '../';
 const fetch = new FetchMock(require('../__mocks__'), {
   fetch: require('isomorphic-fetch'),
   exclude: [
+    'https://www.amazon.com',
     '/foo/boo/:foo*',
     'http://:foo*',
     'https://:foo*',
@@ -114,14 +115,14 @@ describe('test fetch mock', () => {
   });
 
   it('fetch exclude path', async () => {
-    const response = await fetch('http://www.baidu.com');
+    const response = await fetch('https://www.amazon.com');
     const { status } = response;
     expect(status).to.be.eql(200);
     const html = await response.text();
     expect(html).not.to.be(undefined);
     expect(html).not.to.be.empty();
     expect(html).to.be.an('string');
-  });
+  }).timeout(20000);
 
   it('post /api/users', async () => {
     const { status } = await fetch('/api/users', {
