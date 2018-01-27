@@ -68,7 +68,20 @@ import FetchMock from 'react-fetch-mock';
 
 if (__dev__) {
   // attention: mocks file should be under `src/`
-  global.fetch = new FetchMock(require('path/to/mocks/directory')).fetch;
+  window.fetch = new FetchMock(require('path/to/mocks/directory'), {
+    fetch: window.fetch,
+    exclude: [
+      'http://www.google.com',
+      '/foo(.*)',
+    ],
+    proxy: [{
+      path: '/path/for/proxy(.*)',
+      target: 'http://other.proxy.server',
+      process: (proxied, matches) => {
+        return `${proxied.target}${matches[1]}`,
+      },
+    }],
+  }).fetch;
 }
 
 // if __dev__ is true, it will back the data you defined in mock directory
