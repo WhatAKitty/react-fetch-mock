@@ -37,7 +37,8 @@ var FetchMock = function () {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
       fetch: function fetch() {},
       exclude: [],
-      proxy: []
+      proxy: [],
+      delay: 2000 // ms
     };
 
     _classCallCheck(this, FetchMock);
@@ -50,6 +51,7 @@ var FetchMock = function () {
     this.raw = options.fetch;
     this.exclude = options.exclude || [];
     this.proxy = options.proxy || [];
+    this.delayTime = options.delay;
 
     this.loadMocks = this.loadMocks.bind(this);
     this.loadMock = this.loadMock.bind(this);
@@ -189,7 +191,10 @@ var FetchMock = function () {
       }
 
       var response = new _response2.default(obj);
-      return Promise.resolve(response);
+      var delayTime = options.delay || this.delayTime || 0;
+      return (0, _util.delay)(delayTime).then(function () {
+        return Promise.resolve(response);
+      });
     }
   }]);
 

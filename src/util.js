@@ -88,7 +88,7 @@ const matchUrl = (sourceUrl, targetUrl) => {
   const targetUrlWithoutProctol = removeProctol(targetUrl);
   const sourceUrlSplits = sourceUrlWithoutProctol.split('/');
   const targetUrlSplits = targetUrlWithoutProctol.split('/');
-  
+
   if (sourceUrlSplits.length !== targetUrlSplits.length) {
     return {
       result: false,
@@ -104,7 +104,7 @@ const matchUrl = (sourceUrl, targetUrl) => {
     }
 
     if (sourceUrlSplit.startsWith('{') && sourceUrlSplit.endsWith('}')) {
-      if (sourceUrlSplit.replace(/[^{]/g,'').length > 1 || sourceUrlSplit.replace(/[^}]/g,'').length > 1) {
+      if (sourceUrlSplit.replace(/[^{]/g, '').length > 1 || sourceUrlSplit.replace(/[^}]/g, '').length > 1) {
         return {
           result: false,
         };
@@ -124,10 +124,19 @@ const matchUrl = (sourceUrl, targetUrl) => {
   };
 };
 
+const delay = (duration) => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
+    }, duration);
+  });
+};
+
 export {
   isNull,
   prueUrl,
   parseUrl,
   parseRequest,
   matchUrl,
+  delay,
 };

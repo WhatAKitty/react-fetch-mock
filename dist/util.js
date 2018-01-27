@@ -132,8 +132,17 @@ var matchUrl = function matchUrl(sourceUrl, targetUrl) {
   };
 };
 
+var delay = function delay(duration) {
+  return new Promise(function (resolve) {
+    setTimeout(function () {
+      resolve();
+    }, duration);
+  });
+};
+
 exports.isNull = isNull;
 exports.prueUrl = prueUrl;
 exports.parseUrl = parseUrl;
 exports.parseRequest = parseRequest;
 exports.matchUrl = matchUrl;
+exports.delay = delay;
