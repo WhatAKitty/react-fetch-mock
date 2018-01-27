@@ -10,8 +10,8 @@ const fetch = new FetchMock(require('../__mocks__'), {
     'https://:foo*',
   ],
   proxy: [{
-    path: '/taobao/search(.*)',
-    target: 'https://suggest.taobao.com/sug',
+    path: '/ip(.*)',
+    target: 'https://api.ipify.org',
     process: ({ target }, matches) => {
       return `${target}${matches[1]}`
     }
@@ -156,13 +156,13 @@ describe('test fetch mock', () => {
   });
 
   it('proxy other api server', async () => {
-    const response = await fetch('/taobao/search?code=utf-8&q=dongxi');
+    const response = await fetch('/ip/?format=json');
     const { status } = response;
     const data = await response.json();
     expect(status).to.be.eql(200);
     expect(data).not.to.be(undefined);
     expect(data).not.to.be.empty();
     expect(data).to.be.an('object');
-    expect(data.result).to.be.an('array');
+    expect(data.ip).to.be.an('string');
   });
 });
