@@ -157,7 +157,9 @@ var FetchMock = function () {
     }
   }, {
     key: 'fetch',
-    value: function fetch(url, options) {
+    value: function fetch(url) {
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
       // using proxy
       if (this.isProxied(url)) {
         url = this.proxied(url);
