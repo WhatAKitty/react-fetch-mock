@@ -146,7 +146,7 @@ var FetchMock = function () {
           proxied = void 0;
       this.proxy.forEach(function (item) {
         var tmp = (0, _pathToRegexp2.default)(item.path).exec(url);
-        if (tmp.length > 1) {
+        if (tmp && tmp.length > 1) {
           matches = tmp;
           proxied = item;
           return false;
