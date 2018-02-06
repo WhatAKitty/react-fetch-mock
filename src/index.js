@@ -98,7 +98,7 @@ class FetchMock {
     let matches, proxied;
     this.proxy.forEach(item => {
       const tmp = pathToRegexp(item.path).exec(url);
-      if (tmp.length > 1) {
+      if (temp && tmp.length > 1) {
         matches = tmp;
         proxied = item;
         return false;
