@@ -22,6 +22,14 @@ class Response {
     return this[_statusText];
   }
 
+  get ok() {
+    if (this[_status] >= 200 && this[_status] < 300) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   text() {
     try {
       return Promise.resolve(JSON.stringify(this[_data]));
