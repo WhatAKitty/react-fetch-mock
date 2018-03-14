@@ -135,6 +135,7 @@ class FetchMock {
       obj = {
         status: 200,
         data: obj,
+        ok: true
       };
     }
 
