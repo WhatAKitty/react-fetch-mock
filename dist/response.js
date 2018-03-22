@@ -51,6 +51,15 @@ var Response = function () {
     get: function get() {
       return this[_statusText];
     }
+  }, {
+    key: 'ok',
+    get: function get() {
+      if (this.status >= 200 && this.status < 300) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }]);
 
   return Response;
